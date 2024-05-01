@@ -48,6 +48,50 @@ scripts:
     description: Generate all assets and code
     run: melos assetgen --no-select && melos codegen --no-select
 
+  analyze:
+    description: Analyze the project
+    exec: flutter analyze
+    failFast: true
+
+  check-format:
+    description: Check the format of all packages in this project
+    exec: dart format --set-exit-if-changed .
+    failFast: true
+
+  test:
+    description: Run all Dart, Flutter and integration tests for all packages in this project
+    run: melos run test-dart --no-select && melos run test-flutter --no-select && melos run test-integration --no-select -- $1
+
+  test-dart:
+    description: Run all Dart tests for all packages in this project
+    exec: dart test test
+    failFast: true
+    concurrency: 1
+    packageFilters:
+      flutter: false
+      dirExists: test
+
+  test-flutter:
+    description: Run all Flutter tests for all packages in this project
+    exec: flutter test test
+    failFast: true
+    concurrency: 1
+    packageFilters:
+      flutter: true
+      dirExists: test
+
+  test-integration:
+    description: Run all integration tests for all packages in this project
+    exec: flutter test integration_test
+    failFast: true
+    concurrency: 1
+    packageFilters:
+      flutter: true
+      dirExists: integration_test
+
+  check-all:
+    description: Run all checks for all packages in this project
+    run: melos analyze && melos check-format && melos test -- $1
 
   post-clean:
     description: Run post clean scripts

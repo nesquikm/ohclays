@@ -6,6 +6,14 @@ For simplicity we use [Melos](https://pub.dev/packages/melos) to manage
 multi-package project. Melos is a Dart tool for managing Dart projects with
 multiple packages, inspired by Lerna for JavaScript.
 
+Also we use [Serverpod](https://serverpod.dev) as a backend framework. It uses Docker containers, so you should install it before running the server. for macOS you can install it by running:
+
+```bash
+brew install --cask docker
+```
+
+NOTE: You don't need to install `serverpod_cli` manually, melos will install it for you.
+
 ### Install melos 🎬
 
 ```bash
@@ -22,7 +30,7 @@ By running the following command, melos will boostrap the project:
 melos prepare
 ```
 
-This will install serverpod_cli and all dependencies, link all packages, and generate all necessary files and make you a cup of coffe. Or tea. Or whatever you like. 🍷?
+This will install `serverpod_cli` and all dependencies, link all packages, and generate all necessary files and make you a cup of coffe. Or tea. Or whatever you like. 🍷?
 
 Also `melos prepare` is a perfect command to run after pulling the project from the repository on CI.
 

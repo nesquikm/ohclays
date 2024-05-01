@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ohclays_client/melos_ohclays_client.iml" filepath="$PROJECT_DIR$/ohclays_client/melos_ohclays_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ohclays_flutter/melos_ohclays_flutter.iml" filepath="$PROJECT_DIR$/ohclays_flutter/melos_ohclays_flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ohclays_server/melos_ohclays_server.iml" filepath="$PROJECT_DIR$/ohclays_server/melos_ohclays_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_ohclays.iml" filepath="$PROJECT_DIR$/melos_ohclays.iml" />
+    </modules>
+  </component>
+</project>

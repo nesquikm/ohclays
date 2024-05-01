@@ -1,0 +1,59 @@
+name: ohclays
+
+packages:
+  - ohclays_client
+  - ohclays_server
+  - ohclays_flutter
+
+scripts:
+  prepare:
+    description: Prepare the project for hacking
+    run: melos bs && melos gen --no-select
+
+  assetgen:
+    description: Generate assets
+    exec: bash scripts/gen-assets.sh
+    failFast: true
+    concurrency: 1
+    orderDependents: true
+    packageFilters:
+      fileExists: "scripts/gen-assets.sh"
+
+  codegen:
+    description: Generate code
+    exec: bash scripts/gen-code.sh
+    failFast: true
+    concurrency: 1
+    orderDependents: true
+    packageFilters:
+      fileExists: "scripts/gen-code.sh"
+
+  docker-start:
+    description: Start docker
+    run: cd ohclays_server && bash scripts/docker-start.sh
+
+  docker-stop:
+    description: Start docker
+    run: cd ohclays_server && bash scripts/docker-stop.sh
+
+  server-start:
+    description: Start server
+    run: cd ohclays_server && dart bin/main.dart --apply-migrations
+
+  gen:
+    description: Generate all assets and code
+    run: melos assetgen --no-select && melos codegen --no-select
+
+
+  post-clean:
+    description: Run post clean scripts
+    exec: bash scripts/clean.sh
+    failFast: true
+    concurrency: 1
+    packageFilters:
+      fileExists: "scripts/clean.sh"
+
+command:
+  clean:
+    hooks:
+      post: melos post-clean

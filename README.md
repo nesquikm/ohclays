@@ -1,3 +1,5 @@
+# 100 Clays
+
 ## Getting Started 🚀
 
 For simplicity we use [Melos](https://pub.dev/packages/melos) to manage
@@ -20,11 +22,16 @@ By running the following command, melos will boostrap the project:
 melos prepare
 ```
 
-This will install all dependencies, link all packages, and generate all necessary files and make you a cup of coffe. Or tea. Or whatever you like. 🍷?
+This will install serverpod_cli and all dependencies, link all packages, and generate all necessary files and make you a cup of coffe. Or tea. Or whatever you like. 🍷?
+
+Also `melos prepare` is a perfect command to run after pulling the project from the repository on CI.
 
 Alternatively, you can run the following commands:
 
 ```bash
+# This will install serverpod_cli
+dart pub global activate serverpod_cli
+
 # This will install all dependencies and link all packages
 melos bootstrap
 
@@ -36,6 +43,26 @@ For clean generated files and build directories, you can run:
 
 ```bash
 melos clean
+```
+
+**TODO**: We prefer to NOT include generated files in the repository. So, we need to add them to `.gitignore` file. Also we should add `clean.sh` script to clean generated files and directories for every package that has generated files.
+
+## Generating files and assets 🧩
+
+To regenerate all files and assets, you can run the following commands:
+
+```sh
+melos gen
+```
+
+Alternatively, you can run the following commands:
+
+```sh
+# This will regenerate all assets
+melos assetgen
+
+# This will regenerate all files
+melos codegen
 ```
 
 ## Running server
@@ -61,4 +88,18 @@ melos server-start
 ```
 
 It will steal your terminal, so you need to open a new terminal to run other commands. To stop the server, send SIGINT (Ctrl+C).
+
+### Migrations
+
+After changing the database schema, you need to generate a new migration. You can do this by running:
+
+```bash
+melos server-migrate
+```
+
+This will generate a new migration file in `ohclays_server/migrations` directory. The new migration will be applied automatically when you start the server.
+
+## Running the app 🏃‍♀️‍➡️
+
+You can use `flutter run -d [chrome|android|ios|macos]` to run the app, but there is a ready to use launch configurations in `.vscode/launch.json` for VSCode. So, enjoy!
 

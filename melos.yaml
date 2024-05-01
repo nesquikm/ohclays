@@ -8,37 +8,41 @@ packages:
 scripts:
   prepare:
     description: Prepare the project for hacking
-    run: melos bs && melos gen --no-select
+    run: dart pub global activate serverpod_cli && melos bs && melos gen --no-select
 
   assetgen:
     description: Generate assets
-    exec: bash scripts/gen-assets.sh
+    exec: bash scripts/assetgen.sh
     failFast: true
     concurrency: 1
     orderDependents: true
     packageFilters:
-      fileExists: "scripts/gen-assets.sh"
+      fileExists: "scripts/assetgen.sh"
 
   codegen:
     description: Generate code
-    exec: bash scripts/gen-code.sh
+    exec: bash scripts/codegen.sh
     failFast: true
     concurrency: 1
     orderDependents: true
     packageFilters:
-      fileExists: "scripts/gen-code.sh"
+      fileExists: "scripts/codegen.sh"
 
   docker-start:
-    description: Start docker
+    description: Start docker containers
     run: cd ohclays_server && bash scripts/docker-start.sh
 
   docker-stop:
-    description: Start docker
+    description: Stop docker containers
     run: cd ohclays_server && bash scripts/docker-stop.sh
 
   server-start:
     description: Start server
-    run: cd ohclays_server && dart bin/main.dart --apply-migrations
+    run: cd ohclays_server && bash scripts/server-start.sh
+
+  server-migrate:
+    description: Migrate server
+    run: cd ohclays_server && bash scripts/server-migrate.sh
 
   gen:
     description: Generate all assets and code

@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14.1
+    ports:
+      - '8090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: ohclays
+      POSTGRES_PASSWORD: "BHsNl5kWr6H5PgYQ2lk__JkpS-ifmPbx"
+    volumes:
+      - ohclays_data:/var/lib/postgresql/data
+  redis:
+    image: redis:6.2.6
+    ports:
+      - '8091:6379'
+    command: redis-server --requirepass "xl3GbqoPC03bH92u0js3CRiiVdQgzbV3"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+volumes:
+  ohclays_data:

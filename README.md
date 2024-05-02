@@ -30,7 +30,7 @@ By running the following command, melos will boostrap the project:
 melos prepare
 ```
 
-This will install `serverpod_cli` and all dependencies, link all packages, and generate all necessary files and make you a cup of coffe. Or tea. Or whatever you like. 🍷?
+This will install `serverpod_cli` and all dependencies, link all packages, and generate all necessary files and make you a cup of coffee. Or tea. Or whatever you like. 🍷?
 
 Also `melos prepare` is a perfect command to run after pulling the project from the repository on CI.
 
